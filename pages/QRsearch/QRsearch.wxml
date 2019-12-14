@@ -1,0 +1,7 @@
+<!--pages/QRsearch/QRsearch.wxml-->
+
+
+
+<view class="shoudian">
+<image style="width:80rpx;height:80rpx" src="../../icons/手电筒.png"></image>
+</view>

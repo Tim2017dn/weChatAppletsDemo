@@ -1,0 +1,33 @@
+/* pages/search/search.wxss */
+.Homehead{
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+  background-color: #fff;
+}
+.search_img{
+  flex:1;
+}
+.search-text{
+
+  display: flex;
+  justify-content: center;
+}
+.search-input{
+  flex:4;
+  display: flex;
+}
+
+
+
+.history-head{
+  display: flex;
+  justify-content: space-between;
+ padding: 200rpx 0rpx 0rpx 0rpx;
+}
+
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}

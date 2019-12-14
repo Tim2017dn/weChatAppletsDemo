@@ -1,0 +1,14 @@
+
+
+<view class="Homehead">
+  <navigator class="search_icon" url="../search/search">
+  <image class="search_img" style="width:60rpx;height:60rpx" src="../../icons/查询.png"></image>
+  </navigator>
+  <input  style="width:640rpx" bindtap="tiaozhuan" placeholder="查询"/>
+  <navigator class="erwima_icon" url="../QRsearch/QRsearch">
+  <image bindtap="QRsearch" style="width:60rpx;height:60rpx" src="../../icons/二维码查询.png"></image>
+  </navigator>
+
+
+
+</view>

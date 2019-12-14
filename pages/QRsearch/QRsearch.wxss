@@ -1,0 +1,6 @@
+/* pages/QRsearch/QRsearch.wxss */
+
+.shoudian{
+  align-content: center;
+  align-self: center;
+}

@@ -1,0 +1,44 @@
+<search-bar default-text="{{text}}" focus-text="{{text}}" bindsearch="btnfind" show-mask></search-bar>
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-panel__hd font-black-34">化学品名称:{{result.name}}</view>
+  <view class="weui-panel__hd font-black-34">CAS号:{{result.CAS_num}}</view>
+  
+</view>
+
+<view class="weui-cells weui-cells_after-title">
+<view class="weui-panel__hd font-black-34">基本信息</view>
+  <view class="weui-panel__bd">
+     <view class="weui-media-box weui-media-box_text step font-black-26">
+      <view>{{result.base_infomation}}</view>
+    </view>
+</view>
+</view>
+
+<view class="weui-cells weui-cells_after-title">
+<view class="weui-panel__hd font-black-34">危险信息</view>
+  <view class="weui-panel__bd">
+     <view class="weui-media-box weui-media-box_text step font-black-26">
+      <view>{{result.dangerous_information}}</view>
+      </view>
+  </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title">
+<view class="weui-panel__hd font-black-34">防控措施</view>
+  <view class="weui-panel__bd">
+     <view class="weui-media-box weui-media-box_text step font-black-26">
+      <view>{{result.solution}}</view>
+      </view>
+  </view>
+</view>
+
+
+<view class="btn-panel">
+
+  <button size="mini" type="primary" >信息上传</button>
+  
+  <button size="mini"  type="warn" >报警</button>
+ 
+</view>
+

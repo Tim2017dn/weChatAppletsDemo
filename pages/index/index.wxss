@@ -1,0 +1,47 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.Homehead{
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+  background-color: #fff;
+}
+.search_img{
+  flex:7;
+}
+.search-text{
+
+  display: flex;
+  justify-content: center;
+}
+.search-input{
+  flex:4;
+  display: flex;
+}
+
+.erweima_icon{
+  flex:4;
+  width: 60rpx;
+  height:60rpx;
+  align-items: right;
+}

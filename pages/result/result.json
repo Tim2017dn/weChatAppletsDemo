@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "结果",
+  "usingComponents": {
+      "search-bar": "/components/search-bar/index"
+  }
+}
