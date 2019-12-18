@@ -2,6 +2,6 @@
 
   "navigationBarTitleText": "查询",
   "usingComponents": {
-    "search-bar": "/components/search-bar/index"
+    "home-search-bar": "../components/home-search-bar/index"
   }
 }

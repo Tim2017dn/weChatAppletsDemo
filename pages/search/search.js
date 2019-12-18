@@ -1,4 +1,6 @@
 // pages/search/search.js
+const app = getApp()
+var searchBar
 Page({
 
   /**
@@ -8,66 +10,160 @@ Page({
     text:"",
     search: {
       focus: false,
-      history: []
+      history: [],
+      serviceurl:'',
     },
+    serviceurl:"",
+    
+    itemlist:[]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
   },
 
   onSearch:function(e){
-    var var1 = e.detail.value
+   
+    var detail=e.detail
+    var type=detail.type
+    var text=detail.value
 
-    this.setData({
-      text: var1
-    })
+    if(type=="中文名"){
+      this.searchByCHName(text)
+    }else{
+      //按CAS搜索
+      this.searchByCAS(text)
+    }
+
+    this._saveHistory(text)
+
 
 
   },
-  btnsearch:function(e){
-    // console.log(e.detail.value)
+ 
 
-    console.log(e)
-    var var1=e.detail.value
+  searchByCHName: function (text) {
     
-   this.setData({
-     text:var1
-   })
-    // console.log(this.data.text)
-     wx.navigateTo({
-      url: '../result/result?text='+var1 ,
-    })
 
-    this._saveHistory(var1)
-  },
+    var service=this.data.serviceurl
 
-  btnfind: function (e) {
-    console.log("ssss")
     wx.request({
-      url: "http://192.168.31.70:8080/getOneByCHName/",
-      data: {
-        chName: '汞'
-      },
       method: 'GET',
+      url: service + '/chemicals/getByCHName/'+text,
       header: {
-        'content-type': 'application/json' // 默认值
+        'Content-Type': 'application/json'
       },
-      success(res) {
-        console.log(res.data)
+      success: function (res) {
+        console.log(res)
+        
+       
+        if(res.data.length!=0){
+          var data = JSON.stringify(res.data)
+          var tmp = data.split("},{")
+          for (var i = 0; i < tmp.length; ++i) {
+            if (tmp[i][0] == "[") {
+              tmp[i] = tmp[i].substring(1)
+              tmp[i] = tmp[i] + "}"
+            } else {
+              if (tmp[i][tmp[i].length - 1] == "]") {
+                tmp[i] = tmp[i].substring(0, tmp[i].length - 1)
+                tmp[i] = "{" + tmp[i]
+              } else {
+                tmp[i] = "{" + tmp[i] + "}"
+              }
+            }
+            tmp[i] = JSON.parse(tmp[i])
+          }
+
+          wx.setStorage({
+            key: 'itemlist',
+            data: tmp,
+          })
+        }else{
+          //没有查到所搜索的内容
+          wx.setStorage({
+            key: 'itemlist',
+            data: [],
+          })
+          
+        }
+        console.log("setlist success")
+        wx.navigateTo({
+          url: '../result/result',
+        })
+
+
       }
     })
+
+
+   
+
   },
 
+  searchByCAS:function(text){
+    var service = this.data.serviceurl
+
+    wx.request({
+      method: 'GET',
+      url: service + '/chemicals/getByCAS/' + text,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+
+
+        if (res.data.length != 0) {
+          var data = JSON.stringify(res.data)
+          var tmp = data.split("},{")
+          for (var i = 0; i < tmp.length; ++i) {
+            if (tmp[i][0] == "[") {
+              tmp[i] = tmp[i].substring(1)
+              tmp[i] = tmp[i] + "}"
+            } else {
+              if (tmp[i][tmp[i].length - 1] == "]") {
+                tmp[i] = tmp[i].substring(0, tmp[i].length - 1)
+                tmp[i] = "{" + tmp[i]
+              } else {
+                tmp[i] = "{" + tmp[i] + "}"
+              }
+            }
+            tmp[i] = JSON.parse(tmp[i])
+          }
+
+          wx.setStorage({
+            key: 'itemlist',
+            data: tmp,
+          })
+        } else {
+          //没有查到所搜索的内容
+          wx.setStorage({
+            key: 'itemlist',
+            data: [],
+          })
+
+        }
+        console.log("setlist success")
+        wx.navigateTo({
+          url: '../result/result',
+        })
+
+
+      }
+    })   
+
+  },
 
   //保存历史记录
   _saveHistory: function (value) {
     let history = this.data.search.history.filter(v => v !== value)
     history.unshift(value)
-    if (history.length > 6) {
+    if (history.length > 10) {
       history = history.slice(0, 6)
     }
     this.setData({ 'search.history': history })
@@ -79,23 +175,41 @@ Page({
 
 
   clearHistory:function(){
-    this.setData({
-      'search.history':[]
+    // this.setData({
+    //   'search.history':[]
+    // })
+    wx.showModal({
+      title: '清除搜索记录',
+      content: '确定清除所有搜索历史？这项操作将无法撤销',
+      success: res => {
+        if (res.confirm) {
+          wx.removeStorage({ key: 'history' })
+          this.setData({ 'search.history': [] })
+        }
+      }
     })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+   
+    var url=app.serviceurl;
 
+
+    this.setData({serviceurl:url })
+    console.log(this.data.serviceurl)
+
+    searchBar = this.selectComponent('#searchBar')
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+ 
   },
 
   /**

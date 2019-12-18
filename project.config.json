@@ -6,6 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -85,10 +86,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "pages/result/result",
 					"pathName": "pages/result/result",
-					"query": "",
+					"query": "{\"itemlist\":  [{ name: 1, CAS_num: 1 }, { name: 2, CAS_num: 2 }]}",
 					"scene": null
 				},
 				{
@@ -102,6 +103,28 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "上传信息",
+					"pathName": "pages/infoUpload/infoUpload",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "item",
+					"pathName": "pages/resultItem/resultItem",
+					"query": "name=2",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/alarm/alarm",
+					"pathName": "pages/alarm/alarm",
+					"query": "itemname=2",
 					"scene": null
 				}
 			]

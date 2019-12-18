@@ -1,19 +1,25 @@
 // pages/result/result.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    text:"",
+    // text:"",
 
-    result:{
-      name:"1",
-      CAS_num:"2",
-      base_infomation:"3",
-      dangerous_information:"4",
-      solution:"5"
-    }
+    itemlist: [],
+
+    // result:{
+    //   name:"1",
+    //   CAS_num:"2",
+    //   base_infomation:"3",
+    //   dangerous_information:"4",
+    //   solution:"5"
+    // },
+    serviceurl:"",
+
+    
 
   },
 
@@ -22,40 +28,36 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    var text2 = options.text;
-    console.log(options)
+
+
+    wx.getStorage({
+      key: 'itemlist',
+      success: function (res) {
+        that.setData({
+          itemlist:res.data
+        })
+      },
+    })
 
     that.setData({
-      text: text2
-    })
-  },
-
-  btnsearch:function(e){
-    var var1 = e.detail.value
-
-    this.setData({
-      text: var1
+       serviceurl:app.serviceurl
     })
 
-    btnfind()
   },
 
-  btnfind:function(e){
-    console.log(ssss)
-    wx.request({
-      url: 'http://192.168.31.83:8080/getOneByCHName',
-      data: {
-        chName:'汞'
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log(res.data)//打印到控制台
-      }
+
+
+  gotodetail:function(e){
+    let that=this
+    var id = e.currentTarget.dataset.index;
+
+    wx.navigateTo({
+      url: '../resultItem/resultItem?index=' + id,
     })
+    
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

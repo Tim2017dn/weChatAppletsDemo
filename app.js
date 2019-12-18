@@ -1,9 +1,16 @@
 //app.js
+import EventEmitter from './utils/event' // 事件总线
+//第二版本
+
 App({
 
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
+  serviceurl:"http://192.168.31.70:8080",
+
+  
+
   onLaunch: function () {
     
     

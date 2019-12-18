@@ -1,0 +1,6 @@
+/* pages/resultItem/resultItem.wxss */
+
+.btn-panel{
+  padding: 50rpx;
+  display:flex;justify-content:space-around;
+}

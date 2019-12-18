@@ -1,5 +1,6 @@
-<search-bar default-text="{{text}}" focus-text="{{text}}" bindsearch="btnfind" ></search-bar>
- <input type="text"  style="width:640rpx" placeholder="查询" bindconfirm="btnfind" />
+<!-- <search-bar default-text="{{text}}" focus-text="{{text}}" bind:search="btnfind" ></search-bar> -->
+<home-search-bar id="searchBar" bindcancel="onCancel" bindsearch="onSearch"></home-search-bar>
+ 
 <view class="history-head">
   <view class="">搜索历史</view>
   <view>
@@ -9,7 +10,7 @@
 </view>
   <view class="divLine"></view>
 
-<view class="search-box-history__item" wx:for="{{search.history}}" wx:key="{{item}}" data-value="{{item}}" >{{item}}</view>
+<view class="search-box-history__item" wx:for="{{search.history}}" wx:key="item" data-value="{{item}}" >{{item}}</view>
   
 
      

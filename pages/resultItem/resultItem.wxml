@@ -1,0 +1,100 @@
+<!--pages/resultItem/resultItem.wxml-->
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-panel__hd font-black-34">化学品名称:{{item.chName}}</view>
+  <view class="weui-panel__hd font-black-34">CAS号:{{item.cas}}</view>
+  <view class="weui-panel__hd font-black-34">化学式：{{item.formula}}</view>
+  <view class="weui-panel__hd font-black-34">相对原子质量：{{item.weight}}</view>
+  
+</view>
+<!-- 理化特性   property 
+稳定性和反应性 stabAndReact
+危险有害性概述 dangerOV
+GHS危害性分类 dangerCA
+ -->
+<view class="weui-cells ">
+      <view>
+        <view class="weui-panel__hd font-black-34 " data-index="0" bindtap="changehide">理化特性</view>
+         <view  hidden="{{hide[0]}}">
+         <text decode="true"> {{item.property}}</text>
+        </view>
+      </view> 
+
+      <view>
+        <view class="weui-panel__hd font-black-34 " data-index="1" bindtap="changehide">稳定性和反应性</view>
+         <view hidden="{{hide[1]}}">
+          <text decode="true"> {{item.stabAndReact}}</text>
+         </view>
+      </view> 
+
+       <view>
+        <view class="weui-panel__hd font-black-34 " data-index="2"  bindtap="changehide">危险有害性概述</view>
+         <view hidden="{{hide[2]}}">
+          <text decode="true"> {{item.dangerOV}}</text>
+         </view>
+      </view> 
+
+       <view>
+        <view class="weui-panel__hd font-black-34 " data-index="3" bindtap="changehide">GHS危害性分类</view>
+         <view hidden="{{hide[3]}}">
+          <text decode="true">{{item.dangerCA}}</text>
+        </view>
+      </view> 
+</view>
+
+<!-- 操作处置与储存 operAndStore
+接触控制/个体防护 ctrlAndDef
+急救措施 firstAid
+泄露应急处理 leakTreatment
+废弃处置 disposal -->
+<view class="weui-cells ">
+  <view>
+        <view class="weui-panel__hd font-black-34 " data-index="4" bindtap="changehide">操作处置与储存</view>
+         <view hidden="{{hide[4]}}">
+          <text decode="true"> {{item.operAndStore}}</text>
+         </view>
+      </view> 
+
+       <view>
+        <view class="weui-panel__hd font-black-34 " data-index="5" bindtap="changehide">接触控制/个体防护</view>
+         <view hidden="{{hide[5]}}">
+          <text decode="true"> {{item.ctrlAndDef}}</text>
+          </view>
+      </view> 
+
+      <view>
+        <view class="weui-panel__hd font-black-34 " data-index="6"  bindtap="changehide">急救措施</view>
+         <view hidden="{{hide[6]}}">
+          <text decode="true"> {{item.firstAid}}</text>
+          </view>
+      </view> 
+
+      <view>
+        <view class="weui-panel__hd font-black-34 " data-index="7" bindtap="changehide">泄露应急处理</view>
+         <view hidden="{{hide[7]}}">
+          <text decode="true">{{item.leakTreatment}}</text>
+          </view>
+      </view> 
+
+       <view>
+        <view class="weui-panel__hd font-black-34 " data-index="8" bindtap="changehide">废弃处置</view>
+         <view hidden="{{hide[8]}}">
+          <text decode="true"> {{item.disposal}}</text>
+          </view>
+      </view> 
+</view>
+
+
+
+
+
+
+
+
+<view class="btn-panel">
+
+  <button size="mini" bindtap="uploadinfo" type="primary">信息上传</button>
+  
+  <button size="mini" bindtap="alarm" type="warn" >报警</button>
+ 
+</view>
