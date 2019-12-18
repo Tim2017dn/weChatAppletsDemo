@@ -1,0 +1,52 @@
+<view >
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+     <view class="section">
+      <view class="section__title">化学品名称 :</view> 
+       <view class='form-group'>
+          {{itemname}}
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section__title">备注信息 :</view>
+      <view class='form-group'>
+     
+          <textarea style="width:470rpx" class="input-text" name="remark"></textarea>
+      </view>    
+    </view>
+
+     <view class="section">
+      <view class="section__title">位置:</view>
+      <view class='form-group'>
+          <input type="text" class="input-text" name="location" value="{{wd}} {{jd}}" ></input>
+      </view>    
+    </view>
+
+    
+    <view class="section btn-area">
+      <button formType="submit">报警</button>
+      <!-- <button formType="reset">清空</button> -->
+    </view>
+
+
+
+    <!-- 黑框提示并消失 -->
+    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">
+        {{notice_str}}
+    </toast>
+    <!-- 确认框 及 提示框 -->
+
+    <view class="page__bd">
+        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">
+            确认报警么？
+        </modal>
+        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2"      bindcancel="modalChange2">
+            <view> 提示 </view>
+            <view> 清空成功 </view>
+        </modal>
+    </view>
+
+    </form>
+</view>
+
